@@ -50,7 +50,8 @@ describe(function() {
       cwd: this.tmpPath
     });
 
-    expect(path.join(this.tmpPath, '.gitignore'))
-      .to.be.a.file();
+    expect(path.join(this.tmpPath, 'README.md'))
+      .to.be.a.file()
+      .and.equal(path.resolve(__dirname, 'fixtures/expected/README.md'));
   });
 });
