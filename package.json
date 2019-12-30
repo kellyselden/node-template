@@ -1,0 +1,26 @@
+{
+  "name": "@kellyselden/node-template",
+  "version": "0.0.0",
+  "description": "My Node.js template using ember-cli-update",
+  "main": "index.js",
+  "files": [
+    "files",
+    "index.js"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellyselden/node-template.git"
+  },
+  "keywords": [
+    "ember-blueprint"
+  ],
+  "author": "Kelly Selden",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kellyselden/node-template/issues"
+  },
+  "homepage": "https://github.com/kellyselden/node-template#readme"
+}

@@ -1,0 +1,10 @@
+{
+  "author": "Kelly Selden",
+  "license": "MIT",
+  "engines": {
+    "node": ">=8.10"
+  },
+  "devDependencies": {
+    "renovate-config-standard": "^2.0.0"
+  }
+}
