@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/kellyselden/node-template/issues"
   },
-  "homepage": "https://github.com/kellyselden/node-template#readme"
+  "homepage": "https://github.com/kellyselden/node-template#readme",
+  "engines": {
+    "node": ">=8.10"
+  }
 }
