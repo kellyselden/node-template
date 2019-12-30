@@ -37,7 +37,7 @@ describe(function() {
 
   beforeEach(async function() {
     this.tmpPath = await buildTmp({
-      fixturesPath: path.resolve(__dirname, 'fixtures')
+      fixturesPath: path.resolve(__dirname, 'fixtures/base')
     });
   });
 
