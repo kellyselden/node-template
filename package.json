@@ -44,6 +44,7 @@
     "git-fixtures": "^2.1.6",
     "mocha": "^6.2.2",
     "mocha-helpers": "^4.2.1",
+    "renovate-config-standard": "^2.0.0",
     "tmp": "0.1.0"
   }
 }
