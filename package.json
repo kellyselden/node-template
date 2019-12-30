@@ -40,8 +40,10 @@
     "eslint-plugin-node": "^11.0.0",
     "eslint-plugin-prefer-let": "^1.0.1",
     "execa": "^3.4.0",
+    "git-diff-apply": "0.20.1",
     "git-fixtures": "^2.1.6",
     "mocha": "^6.2.2",
-    "mocha-helpers": "^4.2.1"
+    "mocha-helpers": "^4.2.1",
+    "tmp": "0.1.0"
   }
 }
