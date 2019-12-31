@@ -1,4 +1,5 @@
 {
+  "name": "<%= name %>",
   "scripts": {
     "lint": "eslint . --ext js,json",
     "test": "mocha --recursive"
