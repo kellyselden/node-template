@@ -50,8 +50,7 @@ describe(function() {
       cwd: this.tmpPath
     });
 
-    expect(path.join(this.tmpPath, 'README.md'))
-      .to.be.a.file()
-      .and.equal(path.resolve(__dirname, 'fixtures/expected/README.md'));
+    expect(path.join(this.tmpPath, 'renovate.json'))
+      .to.be.a.file();
   });
 });
