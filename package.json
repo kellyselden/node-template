@@ -42,7 +42,7 @@
     "execa": "^3.4.0",
     "git-diff-apply": "0.22.1",
     "git-fixtures": "^2.1.6",
-    "mocha": "^6.2.2",
+    "mocha": "^7.0.0",
     "mocha-helpers": "^4.2.1",
     "renovate-config-standard": "^2.0.0",
     "tmp": "0.1.0"
