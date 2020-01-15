@@ -6,5 +6,8 @@ branches:
   - master
   # npm version tags
   - /^v\d+\.\d+\.\d+$/
+cache:
+  directories:
+  - "$HOME/.npm"
 before_script:
 - npm run lint
