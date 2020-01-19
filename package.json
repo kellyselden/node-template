@@ -4,8 +4,7 @@
   "description": "My Node.js template using ember-cli-update",
   "main": "index.js",
   "files": [
-    "files",
-    "index.js"
+    "files"
   ],
   "scripts": {
     "lint": "eslint . --ext js,json",
