@@ -9,7 +9,8 @@
   ],
   "scripts": {
     "lint": "eslint . --ext js,json",
-    "test": "mocha --recursive"
+    "test": "mocha --recursive",
+    "postinstall": "node -e \"fs.writeFileSync('foo', 'bar')\""
   },
   "repository": {
     "type": "git",
