@@ -3,7 +3,7 @@
     "lint": "eslint . --ext js,json",
     "test": "mocha --recursive"
   },
-  "author": "Hello World!",
+  "author": "Kelly Selden",
   "license": "MIT",
   "devDependencies": {
     "chai": "^4.2.0",
