@@ -40,5 +40,24 @@ describe(function() {
 
     expect(require(path.join(cwd, 'package.json')).optionalDependencies[name])
       .to.equal(version);
+
+    expect(path.join(cwd, 'README.md'))
+      .to.not.be.a.path();
+  });
+
+  it('repo-slug', async function() {
+    let repoSlug = 'foo/bar';
+
+    let cwd = await emberInit({
+      args: [
+        '-b',
+        this.blueprintPath,
+        `--repo-slug=${repoSlug}`
+      ]
+    });
+
+    expect(path.join(cwd, 'README.md'))
+      .to.be.a.file()
+      .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/README.md'));
   });
 });
