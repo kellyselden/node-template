@@ -33,7 +33,12 @@ describe(function() {
       ]
     });
 
-    expect(path.join(cwd, 'renovate.json'))
-      .to.be.a.file();
+    let {
+      name,
+      version
+    } = require('../package');
+
+    expect(require(path.join(cwd, 'package.json')).optionalDependencies[name])
+      .to.equal(version);
   });
 });
