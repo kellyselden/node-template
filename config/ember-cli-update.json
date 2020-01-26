@@ -26,7 +26,10 @@
       "version": "0.7.15",
       "blueprints": [
         {
-          "name": "@kellyselden/node-template"
+          "name": "@kellyselden/node-template",
+          "options": [
+            "--repo-slug=kellyselden/node-template"
+          ]
         }
       ]
     }
