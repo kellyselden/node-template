@@ -6,10 +6,30 @@ const {
 } = require('./package');
 
 module.exports = {
-  locals() {
+  availableOptions: [
+    {
+      name: 'repo-slug',
+      type: String
+    }
+  ],
+
+  locals({
+    repoSlug
+  }) {
     return {
       name,
-      version
+      version,
+      repoSlug
     };
+  },
+
+  files() {
+    let files = this._super.files.apply(this, arguments);
+
+    if (!this.options.repoSlug) {
+      files.splice(files.indexOf('README.md'), 1);
+    }
+
+    return files;
   }
 };
