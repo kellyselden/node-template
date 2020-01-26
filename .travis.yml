@@ -29,5 +29,6 @@ jobs:
       provider: npm
       email: kellyselden@gmail.com
       api_key: $NPM_TOKEN
+      edge: true # opt in to dpl v2
       on:
         tags: true
