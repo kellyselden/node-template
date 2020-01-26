@@ -28,6 +28,6 @@ jobs:
     deploy:
       provider: npm
       email: kellyselden@gmail.com
-      api_key: $NPM_TOKEN
+      # api_key: $NPM_TOKEN
       on:
         tags: true
