@@ -29,3 +29,5 @@ jobs:
       provider: npm
       email: kellyselden@gmail.com
       api_key: $NPM_TOKEN
+    on:
+      tags: true
