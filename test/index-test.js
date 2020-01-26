@@ -55,6 +55,9 @@ describe(function() {
     expect(path.join(cwd, 'README.md'))
       .to.not.be.a.path();
 
+    expect(path.join(cwd, '.travis.yml'))
+      .to.be.a.file();
+
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
 
@@ -80,6 +83,30 @@ describe(function() {
 
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+    expect(actual).to.deep.equal(expected);
+  });
+
+  it('ci-provider=github-actions', async function() {
+    let cwd = await emberInit({
+      args: [
+        '-b',
+        this.blueprintPath,
+        '--ci-provider=github-actions'
+      ]
+    });
+
+    expect(path.join(cwd, 'README.md'))
+      .to.not.be.a.path();
+
+    expect(path.join(cwd, '.travis.yml'))
+      .to.not.be.a.path();
+
+    let actual = await walkDir(cwd);
+    let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+    expected.splice(expected.indexOf('.travis.yml'), 1);
+    expected.splice(expected.indexOf('README.md'), 1);
 
     expect(actual).to.deep.equal(expected);
   });

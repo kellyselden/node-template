@@ -10,6 +10,11 @@ module.exports = {
     {
       name: 'repo-slug',
       type: String
+    },
+    {
+      name: 'ci-provider',
+      type: String,
+      default: 'travis-ci'
     }
   ],
 
@@ -26,10 +31,24 @@ module.exports = {
   files() {
     let files = this._super.files.apply(this, arguments);
 
-    if (!this.options.repoSlug) {
-      let i = files.indexOf('README.md');
+    function remove(file) {
+      let i = files.indexOf(file);
       if (i !== -1) {
         files.splice(i, 1);
+      }
+    }
+
+    switch (this.options.ciProvider) {
+      case 'github-actions': {
+        remove('.travis.yml');
+        remove('README.md');
+        break;
+      }
+      case 'travis-ci':
+      default: {
+        if (!this.options.repoSlug) {
+          remove('README.md');
+        }
       }
     }
 
