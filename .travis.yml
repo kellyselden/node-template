@@ -31,3 +31,4 @@ jobs:
       api_key: $NPM_TOKEN
     on:
       tags: true
+      all_branches: true
