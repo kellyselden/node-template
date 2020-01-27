@@ -28,7 +28,8 @@
         {
           "name": "@kellyselden/node-template",
           "options": [
-            "--repo-slug=kellyselden/node-template"
+            "--repo-slug=kellyselden/node-template",
+            "--ci-provider=travis-ci"
           ]
         }
       ]
