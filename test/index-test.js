@@ -26,7 +26,11 @@ async function walkDir(dir) {
   return await new Promise((resolve, reject) => {
     let items = [];
     klaw(dir)
-      .on('data', item => items.push(path.relative(dir, item.path)))
+      .on('data', item => {
+        if (!item.stats.isDirectory()) {
+          items.push(path.relative(dir, item.path));
+        }
+      })
       .on('end', () => resolve(items))
       .on('error', reject);
   });
@@ -61,10 +65,15 @@ describe(function() {
       .to.be.a.file()
       .and.equal(path.join(fixturesDir, 'default/.travis.yml'));
 
+    expect(path.join(cwd, '.github'))
+      .to.not.be.a.path();
+
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
 
     expected.splice(expected.indexOf('README.md'), 1);
+    expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
+    expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
 
     expect(actual).to.deep.equal(expected);
   });
@@ -88,8 +97,14 @@ describe(function() {
       .to.be.a.file()
       .and.equal(path.join(fixturesDir, 'repo-slug/.travis.yml'));
 
+    expect(path.join(cwd, '.github'))
+      .to.not.be.a.path();
+
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+    expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
+    expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
 
     expect(actual).to.deep.equal(expected);
   });
@@ -108,6 +123,9 @@ describe(function() {
 
     expect(path.join(cwd, '.travis.yml'))
       .to.not.be.a.path();
+
+    expect(path.join(cwd, '.github'))
+      .to.be.a.directory();
 
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));

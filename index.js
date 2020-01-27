@@ -34,6 +34,8 @@ module.exports = {
       }
       case 'travis-ci':
       default: {
+        remove('.github/workflows/ci.yml');
+        remove('.github/workflows/publish.yml');
         if (!this.options.repoSlug) {
           remove('README.md');
         }
