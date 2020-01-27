@@ -49,7 +49,7 @@ describe(function() {
       version
     } = require('../package');
 
-    expect(require(path.join(cwd, 'package.json')).optionalDependencies[name])
+    expect(require(path.join(cwd, 'package.json')).devDependencies[name])
       .to.equal(version);
 
     expect(path.join(cwd, 'README.md'))
