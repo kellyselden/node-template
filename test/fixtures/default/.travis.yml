@@ -31,5 +31,4 @@ jobs:
       api_key: $NPM_TOKEN
       edge: true # opt in to dpl v2
       on:
-        tags: true<% if (repoSlug) { %>
-        repo: <%= repoSlug %><% } %>
+        tags: true

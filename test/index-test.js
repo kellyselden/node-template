@@ -9,6 +9,8 @@ const {
 } = require('ember-cli-update-test-helpers');
 const klaw = require('klaw');
 
+const fixturesDir = path.resolve(__dirname, 'fixtures');
+
 async function emberInit({
   args = []
 }) {
@@ -56,7 +58,8 @@ describe(function() {
       .to.not.be.a.path();
 
     expect(path.join(cwd, '.travis.yml'))
-      .to.be.a.file();
+      .to.be.a.file()
+      .and.equal(path.join(fixturesDir, 'default/.travis.yml'));
 
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
@@ -80,6 +83,10 @@ describe(function() {
     expect(path.join(cwd, 'README.md'))
       .to.be.a.file()
       .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/README.md'));
+
+    expect(path.join(cwd, '.travis.yml'))
+      .to.be.a.file()
+      .and.equal(path.join(fixturesDir, 'repo-slug/.travis.yml'));
 
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
