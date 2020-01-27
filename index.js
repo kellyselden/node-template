@@ -27,7 +27,10 @@ module.exports = {
     let files = this._super.files.apply(this, arguments);
 
     if (!this.options.repoSlug) {
-      files.splice(files.indexOf('README.md'), 1);
+      let i = files.indexOf('README.md');
+      if (i !== -1) {
+        files.splice(i, 1);
+      }
     }
 
     return files;
