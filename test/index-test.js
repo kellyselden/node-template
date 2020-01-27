@@ -7,6 +7,7 @@ const {
   emberInit: _emberInit,
   setUpBlueprintMocha
 } = require('ember-cli-update-test-helpers');
+const klaw = require('klaw');
 
 async function emberInit({
   args = []
@@ -16,6 +17,16 @@ async function emberInit({
       '-sn',
       ...args
     ]
+  });
+}
+
+async function walkDir(dir) {
+  return await new Promise((resolve, reject) => {
+    let items = [];
+    klaw(dir)
+      .on('data', item => items.push(path.relative(dir, item.path)))
+      .on('end', () => resolve(items))
+      .on('error', reject);
   });
 }
 
@@ -43,6 +54,13 @@ describe(function() {
 
     expect(path.join(cwd, 'README.md'))
       .to.not.be.a.path();
+
+    let actual = await walkDir(cwd);
+    let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+    expected.splice(expected.indexOf('README.md'), 1);
+
+    expect(actual).to.deep.equal(expected);
   });
 
   it('repo-slug', async function() {
@@ -59,5 +77,10 @@ describe(function() {
     expect(path.join(cwd, 'README.md'))
       .to.be.a.file()
       .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/README.md'));
+
+    let actual = await walkDir(cwd);
+    let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+    expect(actual).to.deep.equal(expected);
   });
 });
