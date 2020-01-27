@@ -30,6 +30,7 @@
     "@kellyselden/node-template": "0.8.3",
     "chai": "^4.2.0",
     "chai-fs": "^2.0.0",
+    "ember-cli-blueprint": "0.1.7",
     "ember-cli-update-test-helpers": "0.4.1",
     "eslint": "^6.8.0",
     "eslint-config-sane": "0.8.5",
@@ -41,10 +42,7 @@
     "klaw": "^3.0.0",
     "mocha": "^7.0.0",
     "mocha-helpers": "^4.2.1",
-    "renovate-config-standard": "^2.0.0"
-  },
-  "optionalDependencies": {
-    "ember-cli-blueprint": "0.1.7",
+    "renovate-config-standard": "^2.0.0",
     "standard-node-template": "0.0.1"
   }
 }
