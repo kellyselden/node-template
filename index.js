@@ -6,18 +6,6 @@ const {
 } = require('./package');
 
 module.exports = {
-  availableOptions: [
-    {
-      name: 'repo-slug',
-      type: String
-    },
-    {
-      name: 'ci-provider',
-      type: String,
-      default: 'travis-ci'
-    }
-  ],
-
   locals({
     repoSlug
   }) {
