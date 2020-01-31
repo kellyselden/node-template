@@ -65,6 +65,9 @@ describe(function() {
       .to.be.a.file()
       .and.equal(path.join(fixturesDir, 'default/.travis.yml'));
 
+    expect(path.join(cwd, 'appveyor.yml'))
+      .to.not.be.a.path();
+
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
 
@@ -72,30 +75,31 @@ describe(function() {
     let expected = await walkDir(path.resolve(__dirname, '../files'));
 
     expected.splice(expected.indexOf('README.md'), 1);
+    expected.splice(expected.indexOf('appveyor.yml'), 1);
     expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
     expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
 
     expect(actual).to.deep.equal(expected);
   });
 
-  it('repo-slug', async function() {
-    let repoSlug = 'foo/bar';
-
+  it('appveyor', async function() {
     let cwd = await emberInit({
       args: [
         '-b',
         this.blueprintPath,
-        `--repo-slug=${repoSlug}`
+        '--no-travis-ci',
+        '--appveyor'
       ]
     });
 
     expect(path.join(cwd, 'README.md'))
-      .to.be.a.file()
-      .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/README.md'));
+      .to.not.be.a.path();
 
     expect(path.join(cwd, '.travis.yml'))
-      .to.be.a.file()
-      .and.equal(path.join(fixturesDir, 'repo-slug/.travis.yml'));
+      .to.not.be.a.path();
+
+    expect(path.join(cwd, 'appveyor.yml'))
+      .to.be.a.file();
 
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
@@ -103,6 +107,8 @@ describe(function() {
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
 
+    expected.splice(expected.indexOf('README.md'), 1);
+    expected.splice(expected.indexOf('.travis.yml'), 1);
     expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
     expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
 
@@ -125,15 +131,72 @@ describe(function() {
     expect(path.join(cwd, '.travis.yml'))
       .to.not.be.a.path();
 
+    expect(path.join(cwd, 'appveyor.yml'))
+      .to.not.be.a.path();
+
     expect(path.join(cwd, '.github'))
       .to.be.a.directory();
 
     let actual = await walkDir(cwd);
     let expected = await walkDir(path.resolve(__dirname, '../files'));
 
-    expected.splice(expected.indexOf('.travis.yml'), 1);
     expected.splice(expected.indexOf('README.md'), 1);
+    expected.splice(expected.indexOf('.travis.yml'), 1);
+    expected.splice(expected.indexOf('appveyor.yml'), 1);
 
     expect(actual).to.deep.equal(expected);
+  });
+
+  describe('repo-slug', function() {
+    let repoSlug = 'foo/bar';
+
+    it('works', async function() {
+      let cwd = await emberInit({
+        args: [
+          '-b',
+          this.blueprintPath,
+          `--repo-slug=${repoSlug}`
+        ]
+      });
+
+      expect(path.join(cwd, 'README.md'))
+        .to.be.a.file()
+        .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/travis-ci/README.md'));
+
+      expect(path.join(cwd, '.travis.yml'))
+        .to.be.a.file()
+        .and.equal(path.join(fixturesDir, 'repo-slug/travis-ci/.travis.yml'));
+    });
+
+    it('appveyor', async function() {
+      let cwd = await emberInit({
+        args: [
+          '-b',
+          this.blueprintPath,
+          `--repo-slug=${repoSlug}`,
+          '--no-travis-ci',
+          '--appveyor=appveyor_test_key'
+        ]
+      });
+
+      expect(path.join(cwd, 'README.md'))
+        .to.be.a.file()
+        .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/appveyor/README.md'));
+    });
+
+    it('travis-ci + appveyor', async function() {
+      let cwd = await emberInit({
+        args: [
+          '-b',
+          this.blueprintPath,
+          `--repo-slug=${repoSlug}`,
+          '--appveyor=appveyor_test_key'
+        ]
+      });
+
+      expect(path.join(cwd, 'README.md'))
+        .to.be.a.file()
+        .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/travis-ci+appveyor/README.md'));
+    });
   });
 });

@@ -7,12 +7,16 @@ const {
 
 module.exports = {
   locals({
-    repoSlug
+    repoSlug,
+    travisCi,
+    appveyor
   }) {
     return {
       name,
       version,
-      repoSlug
+      repoSlug,
+      travisCi: travisCi !== false,
+      appveyor
     };
   },
 
@@ -28,10 +32,15 @@ module.exports = {
 
     let repoSlug = this.options.repoSlug;
     let travisCi = this.options.travisCi !== false;
+    let appveyor = this.options.appveyor;
     let githubActions = this.options.githubActions;
 
     if (!travisCi) {
       remove('.travis.yml');
+    }
+
+    if (!appveyor) {
+      remove('appveyor.yml');
     }
 
     if (!githubActions) {
@@ -41,7 +50,7 @@ module.exports = {
 
     let keepReadme;
 
-    if (travisCi && repoSlug) {
+    if (repoSlug && (travisCi || appveyor)) {
       keepReadme = true;
     }
 
