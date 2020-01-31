@@ -109,12 +109,13 @@ describe(function() {
     expect(actual).to.deep.equal(expected);
   });
 
-  it('ci-provider=github-actions', async function() {
+  it('github-actions', async function() {
     let cwd = await emberInit({
       args: [
         '-b',
         this.blueprintPath,
-        '--ci-provider=github-actions'
+        '--no-travis-ci',
+        '--github-actions'
       ]
     });
 

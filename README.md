@@ -6,5 +6,5 @@
 My [Node.js](https://nodejs.org) template using [ember-cli-update](https://github.com/ember-cli/ember-cli-update)
 
 ```
-ember-cli-update init -b @kellyselden/node-template --repo-slug=foo/bar --ci-provider=<github-actions|travis-ci>
+ember-cli-update init -b @kellyselden/node-template --repo-slug=foo/bar --travis-ci --github-actions
 ```
