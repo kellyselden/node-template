@@ -26,20 +26,27 @@ module.exports = {
       }
     }
 
-    switch (this.options.ciProvider) {
-      case 'github-actions': {
-        remove('.travis.yml');
-        remove('README.md');
-        break;
-      }
-      case 'travis-ci':
-      default: {
-        remove('.github/workflows/ci.yml');
-        remove('.github/workflows/publish.yml');
-        if (!this.options.repoSlug) {
-          remove('README.md');
-        }
-      }
+    let repoSlug = this.options.repoSlug;
+    let travisCi = this.options.travisCi !== false;
+    let githubActions = this.options.githubActions;
+
+    if (!travisCi) {
+      remove('.travis.yml');
+    }
+
+    if (!githubActions) {
+      remove('.github/workflows/ci.yml');
+      remove('.github/workflows/publish.yml');
+    }
+
+    let keepReadme;
+
+    if (travisCi && repoSlug) {
+      keepReadme = true;
+    }
+
+    if (!keepReadme) {
+      remove('README.md');
     }
 
     return files;
