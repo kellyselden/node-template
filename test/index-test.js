@@ -36,6 +36,17 @@ async function walkDir(dir) {
   });
 }
 
+async function assertExpectedFiles(cwd, ignoredFiles) {
+  let actual = await walkDir(cwd);
+  let expected = await walkDir(path.resolve(__dirname, '../files'));
+
+  for (let ignoredFile of ignoredFiles.map(path.normalize)) {
+    expected.splice(expected.indexOf(ignoredFile), 1);
+  }
+
+  expect(actual).to.deep.equal(expected);
+}
+
 describe(function() {
   this.timeout(5 * 1000);
 
@@ -71,15 +82,12 @@ describe(function() {
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
 
-    let actual = await walkDir(cwd);
-    let expected = await walkDir(path.resolve(__dirname, '../files'));
-
-    expected.splice(expected.indexOf('README.md'), 1);
-    expected.splice(expected.indexOf('appveyor.yml'), 1);
-    expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
-    expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
-
-    expect(actual).to.deep.equal(expected);
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      'appveyor.yml',
+      '.github/workflows/ci.yml',
+      '.github/workflows/publish.yml'
+    ]);
   });
 
   it('appveyor', async function() {
@@ -104,15 +112,12 @@ describe(function() {
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
 
-    let actual = await walkDir(cwd);
-    let expected = await walkDir(path.resolve(__dirname, '../files'));
-
-    expected.splice(expected.indexOf('README.md'), 1);
-    expected.splice(expected.indexOf('.travis.yml'), 1);
-    expected.splice(expected.indexOf('.github/workflows/ci.yml'), 1);
-    expected.splice(expected.indexOf('.github/workflows/publish.yml'), 1);
-
-    expect(actual).to.deep.equal(expected);
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      '.travis.yml',
+      '.github/workflows/ci.yml',
+      '.github/workflows/publish.yml'
+    ]);
   });
 
   it('github-actions', async function() {
@@ -137,14 +142,11 @@ describe(function() {
     expect(path.join(cwd, '.github'))
       .to.be.a.directory();
 
-    let actual = await walkDir(cwd);
-    let expected = await walkDir(path.resolve(__dirname, '../files'));
-
-    expected.splice(expected.indexOf('README.md'), 1);
-    expected.splice(expected.indexOf('.travis.yml'), 1);
-    expected.splice(expected.indexOf('appveyor.yml'), 1);
-
-    expect(actual).to.deep.equal(expected);
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      '.travis.yml',
+      'appveyor.yml'
+    ]);
   });
 
   describe('repo-slug', function() {
