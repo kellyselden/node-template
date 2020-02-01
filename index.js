@@ -15,7 +15,7 @@ module.exports = {
       name,
       version,
       repoSlug,
-      travisCi: travisCi !== false,
+      travisCi,
       appveyor
     };
   },
@@ -30,10 +30,12 @@ module.exports = {
       }
     }
 
-    let repoSlug = this.options.repoSlug;
-    let travisCi = this.options.travisCi !== false;
-    let appveyor = this.options.appveyor;
-    let githubActions = this.options.githubActions;
+    let {
+      repoSlug,
+      travisCi,
+      appveyor,
+      githubActions
+    } = this.options;
 
     if (!travisCi) {
       remove('.travis.yml');

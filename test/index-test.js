@@ -73,6 +73,36 @@ describe(function() {
       .to.not.be.a.path();
 
     expect(path.join(cwd, '.travis.yml'))
+      .to.not.be.a.path();
+
+    expect(path.join(cwd, 'appveyor.yml'))
+      .to.not.be.a.path();
+
+    expect(path.join(cwd, '.github'))
+      .to.not.be.a.path();
+
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      '.travis.yml',
+      'appveyor.yml',
+      '.github/workflows/ci.yml',
+      '.github/workflows/publish.yml'
+    ]);
+  });
+
+  it('travis-ci', async function() {
+    let cwd = await emberInit({
+      args: [
+        '-b',
+        this.blueprintPath,
+        '--travis-ci'
+      ]
+    });
+
+    expect(path.join(cwd, 'README.md'))
+      .to.not.be.a.path();
+
+    expect(path.join(cwd, '.travis.yml'))
       .to.be.a.file()
       .and.equal(path.join(fixturesDir, 'default/.travis.yml'));
 
@@ -95,7 +125,6 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--no-travis-ci',
         '--appveyor'
       ]
     });
@@ -125,7 +154,6 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--no-travis-ci',
         '--github-actions'
       ]
     });
@@ -162,6 +190,29 @@ describe(function() {
       });
 
       expect(path.join(cwd, 'README.md'))
+        .to.not.be.a.path();
+
+      expect(path.join(cwd, '.travis.yml'))
+        .to.not.be.a.path();
+
+      expect(path.join(cwd, 'appveyor.yml'))
+        .to.not.be.a.path();
+
+      expect(path.join(cwd, '.github'))
+        .to.not.be.a.path();
+    });
+
+    it('travis-ci', async function() {
+      let cwd = await emberInit({
+        args: [
+          '-b',
+          this.blueprintPath,
+          `--repo-slug=${repoSlug}`,
+          '--travis-ci'
+        ]
+      });
+
+      expect(path.join(cwd, 'README.md'))
         .to.be.a.file()
         .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/travis-ci/README.md'));
 
@@ -176,7 +227,6 @@ describe(function() {
           '-b',
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
-          '--no-travis-ci',
           '--appveyor=appveyor_test_key'
         ]
       });
@@ -192,6 +242,7 @@ describe(function() {
           '-b',
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
+          '--travis-ci',
           '--appveyor=appveyor_test_key'
         ]
       });
@@ -199,6 +250,20 @@ describe(function() {
       expect(path.join(cwd, 'README.md'))
         .to.be.a.file()
         .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/travis-ci+appveyor/README.md'));
+    });
+
+    it('github-actions', async function() {
+      let cwd = await emberInit({
+        args: [
+          '-b',
+          this.blueprintPath,
+          `--repo-slug=${repoSlug}`,
+          '--github-actions'
+        ]
+      });
+
+      expect(path.join(cwd, 'README.md'))
+        .to.not.be.a.path();
     });
   });
 });
