@@ -1,4 +1,6 @@
 !.*
 
+/node_modules/
+
 /files/
 /test/fixtures/
