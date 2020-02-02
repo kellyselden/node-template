@@ -18,6 +18,8 @@ jobs:
     - run: npm run lint
 
   test:
+    needs: lint
+
     strategy:
       matrix:
         os:
