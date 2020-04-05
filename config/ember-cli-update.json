@@ -30,7 +30,8 @@
           "options": [
             "--repo-slug=kellyselden/node-template",
             "--travis-ci",
-            "--appveyor=geri0lhhblcifcsr"
+            "--appveyor=geri0lhhblcifcsr",
+            "--renovate"
           ]
         }
       ]

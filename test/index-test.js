@@ -70,7 +70,7 @@ describe(function() {
       .to.have.property(name, version);
 
     expect(require(path.join(cwd, 'package')).devDependencies)
-      .to.have.property('renovate-config-standard');
+      .to.not.have.property('renovate-config-standard');
 
     expect(path.join(cwd, 'README.md'))
       .to.not.be.a.path();
@@ -84,12 +84,16 @@ describe(function() {
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
 
+    expect(path.join(cwd, 'renovate.json'))
+      .to.not.be.a.path();
+
     await assertExpectedFiles(cwd, [
       'README.md',
       '.travis.yml',
       'appveyor.yml',
       '.github/workflows/ci.yml',
-      '.github/workflows/publish.yml'
+      '.github/workflows/publish.yml',
+      'renovate.json'
     ]);
   });
 
@@ -119,7 +123,8 @@ describe(function() {
       'README.md',
       'appveyor.yml',
       '.github/workflows/ci.yml',
-      '.github/workflows/publish.yml'
+      '.github/workflows/publish.yml',
+      'renovate.json'
     ]);
   });
 
@@ -148,7 +153,8 @@ describe(function() {
       'README.md',
       '.travis.yml',
       '.github/workflows/ci.yml',
-      '.github/workflows/publish.yml'
+      '.github/workflows/publish.yml',
+      'renovate.json'
     ]);
   });
 
@@ -176,7 +182,32 @@ describe(function() {
     await assertExpectedFiles(cwd, [
       'README.md',
       '.travis.yml',
-      'appveyor.yml'
+      'appveyor.yml',
+      'renovate.json'
+    ]);
+  });
+
+  it('renovate', async function() {
+    let cwd = await emberInit({
+      args: [
+        '-b',
+        this.blueprintPath,
+        '--renovate'
+      ]
+    });
+
+    expect(require(path.join(cwd, 'package')).devDependencies)
+      .to.have.property('renovate-config-standard');
+
+    expect(path.join(cwd, 'renovate.json'))
+      .to.be.a.file();
+
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      '.travis.yml',
+      'appveyor.yml',
+      '.github/workflows/ci.yml',
+      '.github/workflows/publish.yml'
     ]);
   });
 
@@ -194,6 +225,15 @@ describe(function() {
 
     expect(path.join(cwd, 'renovate.json'))
       .to.not.be.a.path();
+
+    await assertExpectedFiles(cwd, [
+      'README.md',
+      '.travis.yml',
+      'appveyor.yml',
+      '.github/workflows/ci.yml',
+      '.github/workflows/publish.yml',
+      'renovate.json'
+    ]);
   });
 
   describe('repo-slug', function() {

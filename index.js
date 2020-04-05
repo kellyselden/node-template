@@ -10,7 +10,7 @@ module.exports = {
     repoSlug,
     travisCi,
     appveyor,
-    dependabot
+    renovate
   }) {
     return {
       name,
@@ -18,7 +18,7 @@ module.exports = {
       repoSlug,
       travisCi,
       appveyor,
-      renovate: !dependabot
+      renovate
     };
   },
 
@@ -37,7 +37,7 @@ module.exports = {
       travisCi,
       appveyor,
       githubActions,
-      dependabot
+      renovate
     } = this.options;
 
     if (!travisCi) {
@@ -63,7 +63,7 @@ module.exports = {
       remove('README.md');
     }
 
-    if (dependabot) {
+    if (!renovate) {
       remove('renovate.json');
     }
 
