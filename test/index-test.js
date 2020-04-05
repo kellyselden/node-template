@@ -66,8 +66,11 @@ describe(function() {
       version
     } = require('../package');
 
-    expect(require(path.join(cwd, 'package.json')).devDependencies[name])
-      .to.equal(version);
+    expect(require(path.join(cwd, 'package')).devDependencies)
+      .to.have.property(name, version);
+
+    expect(require(path.join(cwd, 'package')).devDependencies)
+      .to.have.property('renovate-config-standard');
 
     expect(path.join(cwd, 'README.md'))
       .to.not.be.a.path();
@@ -175,6 +178,22 @@ describe(function() {
       '.travis.yml',
       'appveyor.yml'
     ]);
+  });
+
+  it('dependabot', async function() {
+    let cwd = await emberInit({
+      args: [
+        '-b',
+        this.blueprintPath,
+        '--dependabot'
+      ]
+    });
+
+    expect(require(path.join(cwd, 'package')).devDependencies)
+      .to.not.have.property('renovate-config-standard');
+
+    expect(path.join(cwd, 'renovate.json'))
+      .to.not.be.a.path();
   });
 
   describe('repo-slug', function() {
