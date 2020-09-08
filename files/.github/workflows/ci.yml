@@ -25,7 +25,7 @@ jobs:
         os:
         - ubuntu-latest
         node:
-        - 8
+        - 10
 
     runs-on: ${{ matrix.os }}
 
