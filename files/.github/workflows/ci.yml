@@ -53,3 +53,4 @@ jobs:
     - uses: kellyselden/ember-cli-update-action@master
       with:
         autofix_command: npm run lint -- --fix
+        ignore_to: true
