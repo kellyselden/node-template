@@ -48,7 +48,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         ref: ${{ github.head_ref }}
-        token: ${{ secrets.GitHubToken }}<% /* Normally you can push without this, but if you try to change the workflow you get ! [remote rejected] github_token -> github_token (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yml` without `workflows` permission) */ %>
+        token: ${{ secrets.GitHubToken }}
     - uses: actions/setup-node@v1
     - uses: kellyselden/ember-cli-update-action@v2
       with:

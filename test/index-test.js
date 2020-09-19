@@ -176,8 +176,9 @@ describe(function() {
     expect(path.join(cwd, 'appveyor.yml'))
       .to.not.be.a.path();
 
-    expect(path.join(cwd, '.github'))
-      .to.be.a.directory();
+    expect(path.join(cwd, '.github/workflows/ci.yml'))
+      .to.be.a.file()
+      .and.equal(path.join(fixturesDir, 'default/ci.yml'));
 
     await assertExpectedFiles(cwd, [
       'README.md',
