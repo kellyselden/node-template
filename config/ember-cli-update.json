@@ -29,7 +29,7 @@
           "name": "@kellyselden/node-template",
           "options": [
             "--repo-slug=kellyselden/node-template",
-            "--travis-ci",
+            "--github-actions",
             "--appveyor=geri0lhhblcifcsr",
             "--renovate"
           ]
