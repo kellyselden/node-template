@@ -22,7 +22,6 @@
     },
     {
       "name": "@kellyselden/node-template",
-      "location": ".",
       "version": "1.4.2",
       "blueprints": [
         {
