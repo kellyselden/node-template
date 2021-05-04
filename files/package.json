@@ -17,6 +17,6 @@
     "eslint-plugin-prefer-let": "^1.1.0",
     "mocha": "^8.3.2",
     "mocha-helpers": "^5.1.1"<% if (renovate) { %>,
-    "renovate-config-standard": "^2.1.1"<% } %>
+    "renovate-config-standard": "2.1.2"<% } %>
   }
 }
