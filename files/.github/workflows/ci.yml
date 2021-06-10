@@ -50,7 +50,7 @@ jobs:
         ref: ${{ github.head_ref }}
         token: ${{ secrets.GitHubToken }}<% /* Normally you can push without this, but if you try to change the workflow you get ! [remote rejected] github_token -> github_token (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yml` without `workflows` permission) */ %>
     - uses: actions/setup-node@v2
-    - uses: kellyselden/ember-cli-update-action@v2
+    - uses: kellyselden/ember-cli-update-action@v3
       with:
         autofix_command: npm run lint -- --fix
         ignore_to: true
