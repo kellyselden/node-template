@@ -8,15 +8,15 @@
   "devDependencies": {
     "<%= name %>": "<%= version %>",
     "chai": "^4.3.4",
-    "eslint": "^7.26.0",
+    "eslint": "^7.28.0",
     "eslint-config-sane": "^1.0.0",
     "eslint-config-sane-node": "^1.0.1",
-    "eslint-plugin-json-files": "^1.0.0",
-    "eslint-plugin-mocha": "^8.1.0",
+    "eslint-plugin-json-files": "^1.1.0",
+    "eslint-plugin-mocha": "^9.0.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prefer-let": "^1.1.0",
-    "mocha": "^8.4.0",
-    "mocha-helpers": "^5.1.1"<% if (renovate) { %>,
+    "mocha": "^9.0.0",
+    "mocha-helpers": "^6.0.0"<% if (renovate) { %>,
     "renovate-config-standard": "2.1.2"<% } %>
   }
 }
