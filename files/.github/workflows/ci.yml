@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
 
     - run: npm ci
     - run: npm run lint
@@ -30,8 +30,8 @@ jobs:
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v2
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node }}
 
@@ -45,11 +45,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
       with:
         ref: ${{ github.head_ref }}
         token: ${{ secrets.GitHubToken }}<% /* Normally you can push without this, but if you try to change the workflow you get ! [remote rejected] github_token -> github_token (refusing to allow a GitHub App to create or update workflow `.github/workflows/ci.yml` without `workflows` permission) */ %>
-    - uses: actions/setup-node@v2
+    - uses: actions/setup-node@v3
 
     - uses: kellyselden/ember-cli-update-action@v3
       with:
