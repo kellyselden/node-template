@@ -1,7 +1,7 @@
 {
   "scripts": {
     "lint": "eslint . --ext js,json",
-    "test": "mocha --recursive"
+    "test": "mocha"
   },
   "author": "Kelly Selden",
   "license": "MIT",
