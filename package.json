@@ -31,7 +31,7 @@
     "chai": "^4.3.7",
     "chai-fs": "^2.0.0",
     "ember-cli-blueprint": "0.1.7",
-    "ember-cli-update-test-helpers": "^2.0.0",
+    "ember-cli-update-test-helpers": "^3.0.0",
     "eslint": "^8.31.0",
     "eslint-config-sane": "^1.0.2",
     "eslint-config-sane-node": "^1.1.1",
