@@ -27,7 +27,7 @@
     "node": ">=16.13"
   },
   "devDependencies": {
-    "@kellyselden/node-template": "3.1.0",
+    "@kellyselden/node-template": "4.0.0",
     "chai": "^4.3.7",
     "chai-fs": "^2.0.0",
     "ember-cli-blueprint": "0.1.7",
