@@ -3,7 +3,7 @@ node_js:
 - '16'
 branches:
   only:
-  - master
+  - main
   # npm version tags
   - /^v\d+\.\d+\.\d+$/
 cache:
@@ -13,7 +13,7 @@ stages:
 - lint
 - test
 - name: ember-cli-update
-  if: branch = master AND type = pull_request AND NOT fork
+  if: branch = main AND type = pull_request AND NOT fork
 - name: deploy
   if: tag IS present
 jobs:
