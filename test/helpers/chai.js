@@ -2,6 +2,6 @@
 
 const chai = require('chai');
 
-chai.use(require('chai-fs'));
+chai.use(require('@crowdstrike/chai-fs'));
 
 module.exports = chai;
