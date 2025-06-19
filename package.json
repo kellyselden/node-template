@@ -27,9 +27,9 @@
     "node": ">=20.9"
   },
   "devDependencies": {
+    "@crowdstrike/chai-fs": "^1.0.0",
     "@kellyselden/node-template": "6.1.0",
     "chai": "^4.5.0",
-    "chai-fs": "^2.0.0",
     "ember-cli-blueprint": "0.1.7",
     "ember-cli-update-test-helpers": "^5.0.0",
     "eslint": "^8.57.1",
