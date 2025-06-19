@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/kellyselden/node-template#readme",
   "engines": {
-    "node": ">=18.12"
+    "node": ">=20.9"
   },
   "devDependencies": {
     "@kellyselden/node-template": "5.2.0",
