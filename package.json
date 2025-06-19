@@ -7,7 +7,7 @@
     "files"
   ],
   "scripts": {
-    "lint": "eslint . --ext js,json",
+    "lint": "eslint",
     "test": "mocha"
   },
   "repository": {
@@ -28,17 +28,20 @@
   },
   "devDependencies": {
     "@crowdstrike/chai-fs": "^1.0.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.29.0",
     "@kellyselden/node-template": "6.1.0",
     "chai": "^4.5.0",
     "ember-cli-blueprint": "0.1.7",
     "ember-cli-update-test-helpers": "^5.0.0",
-    "eslint": "^8.57.1",
+    "eslint": "^9.29.0",
     "eslint-config-sane": "^1.0.2",
     "eslint-config-sane-node": "^2.0.0",
     "eslint-plugin-json-files": "^4.4.2",
     "eslint-plugin-mocha": "^10.5.0",
     "eslint-plugin-n": "^17.20.0",
     "eslint-plugin-prefer-let": "^4.0.0",
+    "globals": "^16.2.0",
     "klaw": "^4.0.0",
     "mocha": "^11.7.0",
     "mocha-helpers": "^9.0.1",
