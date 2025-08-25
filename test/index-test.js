@@ -50,6 +50,7 @@ async function assertExpectedFiles(cwd, ignoredFiles) {
 describe(function() {
   this.timeout(5e3);
 
+  // eslint-disable-next-line mocha/no-setup-in-describe
   setUpBlueprintMocha.call(this);
 
   it('works', async function() {
@@ -239,7 +240,6 @@ describe(function() {
   describe('repo-slug', function() {
     let repoSlug = 'foo/bar';
 
-    // eslint-disable-next-line mocha/no-identical-title
     it('works', async function() {
       let cwd = await emberInit({
         args: [
@@ -262,7 +262,6 @@ describe(function() {
         .to.not.be.a.path();
     });
 
-    // eslint-disable-next-line mocha/no-identical-title
     it('travis-ci', async function() {
       let cwd = await emberInit({
         args: [
@@ -282,7 +281,6 @@ describe(function() {
         .and.equal(path.join(fixturesDir, 'repo-slug/travis-ci/.travis.yml'));
     });
 
-    // eslint-disable-next-line mocha/no-identical-title
     it('appveyor', async function() {
       let cwd = await emberInit({
         args: [
@@ -314,7 +312,6 @@ describe(function() {
         .and.equal(path.resolve(__dirname, 'fixtures/repo-slug/travis-ci+appveyor/README.md'));
     });
 
-    // eslint-disable-next-line mocha/no-identical-title
     it('github-actions', async function() {
       let cwd = await emberInit({
         args: [
