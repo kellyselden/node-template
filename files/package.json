@@ -11,8 +11,8 @@
     "eslint": "^9.34.0",
     "eslint-config-sane-node": "^3.0.2",
     "eslint-plugin-mocha": "^11.1.0",
-    "mocha": "^11.7.0",
-    "mocha-helpers": "^10.0.0"<% if (renovate) { %>,
-    "renovate-config-standard": "2.3.0"<% } %>
+    "mocha": "^11.7.1",
+    "mocha-helpers": "^10.2.1"<% if (renovate) { %>,
+    "renovate-config-standard": "2.4.2"<% } %>
   }
 }
