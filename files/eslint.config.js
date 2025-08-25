@@ -2,7 +2,7 @@
 
 const {
   defineConfig,
-  globalIgnores
+  globalIgnores,
 } = require('eslint/config');
 
 const mocha = require('eslint-plugin-mocha');
@@ -15,10 +15,10 @@ module.exports = defineConfig([
     files: ['test/**/*-test.js'],
     rules: {
       'mocha/no-exclusive-tests': 'error',
-      'mocha/no-empty-description': 'off'
-    }
+      'mocha/no-empty-description': 'off',
+    },
   },
   globalIgnores([
-    'test/fixtures/'
-  ])
+    'test/fixtures/',
+  ]),
 ]);
