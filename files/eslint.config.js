@@ -5,12 +5,12 @@ const {
   globalIgnores
 } = require('eslint/config');
 
-const { default: mocha } = require('eslint-plugin-mocha');
+const mocha = require('eslint-plugin-mocha');
 const saneNode = require('eslint-config-sane-node');
 
 module.exports = defineConfig([
   saneNode,
-  mocha.configs.recommended,
+  mocha.configs.flat.recommended,
   {
     files: ['test/**/*-test.js'],
     rules: {
