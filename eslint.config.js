@@ -20,6 +20,7 @@ module.exports = defineConfig([
   },
   globalIgnores([
     'files/',
+
     'test/fixtures/'
   ])
 ]);
