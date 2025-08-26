@@ -5,20 +5,20 @@ const { expect } = require('./helpers/chai');
 const path = require('path');
 const {
   emberInit: _emberInit,
-  setUpBlueprintMocha
+  setUpBlueprintMocha,
 } = require('ember-cli-update-test-helpers');
 const klaw = require('klaw');
 
 const fixturesDir = path.resolve(__dirname, 'fixtures');
 
 async function emberInit({
-  args = []
+  args = [],
 }) {
   return await _emberInit({
     args: [
       '-sn',
-      ...args
-    ]
+      ...args,
+    ],
   });
 }
 
@@ -57,13 +57,13 @@ describe(function() {
     let cwd = await emberInit({
       args: [
         '-b',
-        this.blueprintPath
-      ]
+        this.blueprintPath,
+      ],
     });
 
     let {
       name,
-      version
+      version,
     } = require('../package');
 
     expect(require(path.join(cwd, 'package')).devDependencies)
@@ -93,7 +93,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json'
+      'renovate.json',
     ]);
   });
 
@@ -102,8 +102,8 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--travis-ci'
-      ]
+        '--travis-ci',
+      ],
     });
 
     expect(path.join(cwd, 'README.md'))
@@ -124,7 +124,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json'
+      'renovate.json',
     ]);
   });
 
@@ -133,8 +133,8 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--appveyor'
-      ]
+        '--appveyor',
+      ],
     });
 
     expect(path.join(cwd, 'README.md'))
@@ -154,7 +154,7 @@ describe(function() {
       '.travis.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json'
+      'renovate.json',
     ]);
   });
 
@@ -163,8 +163,8 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--github-actions'
-      ]
+        '--github-actions',
+      ],
     });
 
     expect(path.join(cwd, 'README.md'))
@@ -184,7 +184,7 @@ describe(function() {
       'README.md',
       '.travis.yml',
       'appveyor.yml',
-      'renovate.json'
+      'renovate.json',
     ]);
   });
 
@@ -193,8 +193,8 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--renovate'
-      ]
+        '--renovate',
+      ],
     });
 
     expect(require(path.join(cwd, 'package')).devDependencies)
@@ -208,7 +208,7 @@ describe(function() {
       '.travis.yml',
       'appveyor.yml',
       '.github/workflows/ci.yml',
-      '.github/workflows/publish.yml'
+      '.github/workflows/publish.yml',
     ]);
   });
 
@@ -217,8 +217,8 @@ describe(function() {
       args: [
         '-b',
         this.blueprintPath,
-        '--dependabot'
-      ]
+        '--dependabot',
+      ],
     });
 
     expect(require(path.join(cwd, 'package')).devDependencies)
@@ -233,7 +233,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json'
+      'renovate.json',
     ]);
   });
 
@@ -245,8 +245,8 @@ describe(function() {
         args: [
           '-b',
           this.blueprintPath,
-          `--repo-slug=${repoSlug}`
-        ]
+          `--repo-slug=${repoSlug}`,
+        ],
       });
 
       expect(path.join(cwd, 'README.md'))
@@ -268,8 +268,8 @@ describe(function() {
           '-b',
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
-          '--travis-ci'
-        ]
+          '--travis-ci',
+        ],
       });
 
       expect(path.join(cwd, 'README.md'))
@@ -287,8 +287,8 @@ describe(function() {
           '-b',
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
-          '--appveyor=appveyor_test_key'
-        ]
+          '--appveyor=appveyor_test_key',
+        ],
       });
 
       expect(path.join(cwd, 'README.md'))
@@ -303,8 +303,8 @@ describe(function() {
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
           '--travis-ci',
-          '--appveyor=appveyor_test_key'
-        ]
+          '--appveyor=appveyor_test_key',
+        ],
       });
 
       expect(path.join(cwd, 'README.md'))
@@ -318,8 +318,8 @@ describe(function() {
           '-b',
           this.blueprintPath,
           `--repo-slug=${repoSlug}`,
-          '--github-actions'
-        ]
+          '--github-actions',
+        ],
       });
 
       expect(path.join(cwd, 'README.md'))
