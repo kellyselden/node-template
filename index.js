@@ -2,7 +2,7 @@
 
 const {
   name,
-  version
+  version,
 } = require('./package');
 
 module.exports = {
@@ -10,7 +10,7 @@ module.exports = {
     repoSlug,
     travisCi,
     appveyor,
-    renovate
+    renovate,
   }) {
     return {
       name,
@@ -18,7 +18,7 @@ module.exports = {
       repoSlug,
       travisCi,
       appveyor,
-      renovate
+      renovate,
     };
   },
 
@@ -37,7 +37,7 @@ module.exports = {
       travisCi,
       appveyor,
       githubActions,
-      renovate
+      renovate,
     } = this.options;
 
     if (!travisCi) {
@@ -68,5 +68,5 @@ module.exports = {
     }
 
     return files;
-  }
+  },
 };
