@@ -1,6 +1,6 @@
 {
   "name": "@kellyselden/node-template",
-  "version": "6.8.2",
+  "version": "6.8.3",
   "description": "My Node.js template using ember-cli-update",
   "main": "index.js",
   "files": [
