@@ -22,7 +22,7 @@
     },
     {
       "name": "@kellyselden/node-template",
-      "version": "6.8.3",
+      "version": "6.8.4",
       "blueprints": [
         {
           "name": "@kellyselden/node-template",
