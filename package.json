@@ -2,6 +2,19 @@
   "name": "@kellyselden/node-template",
   "version": "6.9.0",
   "description": "My Node.js template using ember-cli-update",
+  "keywords": [
+    "ember-blueprint"
+  ],
+  "homepage": "https://github.com/kellyselden/node-template#readme",
+  "bugs": {
+    "url": "https://github.com/kellyselden/node-template/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kellyselden/node-template.git"
+  },
+  "license": "MIT",
+  "author": "Kelly Selden",
   "main": "index.js",
   "files": [
     "files"
@@ -10,35 +23,22 @@
     "lint": "eslint",
     "test": "mocha"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kellyselden/node-template.git"
-  },
-  "keywords": [
-    "ember-blueprint"
-  ],
-  "author": "Kelly Selden",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kellyselden/node-template/issues"
-  },
-  "homepage": "https://github.com/kellyselden/node-template#readme",
-  "engines": {
-    "node": ">=20.9"
-  },
   "devDependencies": {
     "@crowdstrike/chai-fs": "^1.0.0",
-    "@kellyselden/node-template": "6.8.4",
+    "@kellyselden/node-template": "6.9.0",
     "chai": "^4.5.0",
     "ember-cli-blueprint": "0.1.7",
     "ember-cli-update-test-helpers": "^6.0.0",
     "eslint": "^9.34.0",
-    "eslint-config-sane-node": "^5.0.0",
+    "eslint-config-sane-node": "^6.0.0",
     "eslint-plugin-mocha": "^10.5.0",
     "klaw": "^4.0.0",
     "mocha": "^11.7.1",
     "mocha-helpers": "^10.2.1",
     "renovate-config-standard": "2.4.2",
     "standard-node-template": "7.2.0"
+  },
+  "engines": {
+    "node": ">=20.9"
   }
 }
