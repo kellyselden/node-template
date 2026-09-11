@@ -1,6 +1,6 @@
 {
   "extends": [
-    "standard"
+    "github>kellyselden/renovate-config-standard:default.json5"
   ],
   "packageRules": [
     {
