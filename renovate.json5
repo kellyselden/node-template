@@ -1,14 +1,5 @@
 {
   "extends": [
-    "github>kellyselden/renovate-config-standard:default.json5",
-  ],
-  "packageRules": [
-    {
-      "matchPackageNames": [
-        "standard-node-template",
-        "@kellyselden/node-template",
-      ],
-      "separateMinorPatch": true,
-    },
+    "github>kellyselden/renovate-config:default.json5",
   ],
 }
