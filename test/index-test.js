@@ -41,6 +41,8 @@ async function assertExpectedFiles(cwd, ignoredFiles) {
   let expected = await walkDir(path.resolve(__dirname, '../files'));
 
   for (let ignoredFile of ignoredFiles.map(path.normalize)) {
+    expect(expected).to.include(ignoredFile);
+
     expected.splice(expected.indexOf(ignoredFile), 1);
   }
 
