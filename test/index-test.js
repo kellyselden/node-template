@@ -69,9 +69,6 @@ describe(function() {
     expect(require(path.join(cwd, 'package')).devDependencies)
       .to.have.property(name, version);
 
-    expect(require(path.join(cwd, 'package')).devDependencies)
-      .to.not.have.property('renovate-config-standard');
-
     expect(path.join(cwd, 'README.md'))
       .to.not.be.a.path();
 
@@ -84,7 +81,7 @@ describe(function() {
     expect(path.join(cwd, '.github'))
       .to.not.be.a.path();
 
-    expect(path.join(cwd, 'renovate.json'))
+    expect(path.join(cwd, 'renovate.json5'))
       .to.not.be.a.path();
 
     await assertExpectedFiles(cwd, [
@@ -93,7 +90,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json',
+      'renovate.json5',
     ]);
   });
 
@@ -124,7 +121,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json',
+      'renovate.json5',
     ]);
   });
 
@@ -154,7 +151,7 @@ describe(function() {
       '.travis.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json',
+      'renovate.json5',
     ]);
   });
 
@@ -184,7 +181,7 @@ describe(function() {
       'README.md',
       '.travis.yml',
       'appveyor.yml',
-      'renovate.json',
+      'renovate.json5',
     ]);
   });
 
@@ -197,10 +194,7 @@ describe(function() {
       ],
     });
 
-    expect(require(path.join(cwd, 'package')).devDependencies)
-      .to.have.property('renovate-config-standard');
-
-    expect(path.join(cwd, 'renovate.json'))
+    expect(path.join(cwd, 'renovate.json5'))
       .to.be.a.file();
 
     await assertExpectedFiles(cwd, [
@@ -221,10 +215,7 @@ describe(function() {
       ],
     });
 
-    expect(require(path.join(cwd, 'package')).devDependencies)
-      .to.not.have.property('renovate-config-standard');
-
-    expect(path.join(cwd, 'renovate.json'))
+    expect(path.join(cwd, 'renovate.json5'))
       .to.not.be.a.path();
 
     await assertExpectedFiles(cwd, [
@@ -233,7 +224,7 @@ describe(function() {
       'appveyor.yml',
       '.github/workflows/ci.yml',
       '.github/workflows/publish.yml',
-      'renovate.json',
+      'renovate.json5',
     ]);
   });
 
