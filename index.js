@@ -64,7 +64,7 @@ module.exports = {
     }
 
     if (!renovate) {
-      remove('renovate.json');
+      remove('renovate.json5');
     }
 
     return files;
