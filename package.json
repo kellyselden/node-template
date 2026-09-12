@@ -1,6 +1,6 @@
 {
   "name": "@kellyselden/node-template",
-  "version": "7.6.0",
+  "version": "7.7.0",
   "description": "My Node.js template using ember-cli-update",
   "keywords": [
     "ember-blueprint"
