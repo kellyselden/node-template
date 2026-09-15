@@ -6,11 +6,11 @@
   "author": "Kelly Selden",
   "license": "MIT",
   "devDependencies": {
-    "@kellyselden/eslint-config": "^2.0.0",
+    "@kellyselden/eslint-config": "^2.5.0",
     "<%= name %>": "<%= version %>",
     "chai": "^4.5.0",
     "eslint": "^9.34.0",
     "mocha": "^11.7.1",
-    "mocha-helpers": "^11.0.0"
+    "mocha-helpers": "^11.0.1"
   }
 }
